@@ -1,3 +1,21 @@
+```
+
+Ubuntu  là một hệ điều hành máy tính dựa trên Debian GNU/Linux, một bản phân phối Linux thông dụng. 
+Tên của nó bắt nguồn từ "ubuntu"trong tiếng Zulu, có nghĩa là "tình người", mô tả triết lý 
+ubuntu: "Tôi được là chínhmình nhờ có những 
+người xung quanh," một khía cạnh tích cực của cộng đồng. Mục đích của Ubuntu bao gồm việc cung cấp 
+một hệ điều hành ổn định,cập nhật cho người dùng thường, 
+và tập trung vào sự tiện dụng và dễ dàng cài đặt. Ubuntu đã được đánh xếp hạng là bản phân phối Linux
+thông dụng nhất chomáy tính để bàn, chiếm khoảng 30% số bản Linux được cài đặt trên máy tính để bàn năm 2007.
+Ubuntu là phần mềm mã nguồn mở tự do, có nghĩa là người dùng được tự do chạy, sao chép, phân phối,
+nghiên cứu, thay đổi và cải tiếnphần mềm theo điều khoản của giấy phép GNU GPL. Ubuntu được tài trợ bởi 
+Canonical Ltd (chủ sở hữu là một người Nam Phi Mark Shuttleworth). Thay vì bán Ubuntu, Canonical tạo ra 
+doanh thu bằng cách bán hỗ trợ kĩ thuật. Bằng việc để cho Ubuntu tự do và mở mã nguồn, Canonical có 
+thể tận dụng tài năng của những nhà phát triển ở bên ngoài trong các thành phần cấu tạo của Ubuntu
+mà không cần phải tự mình phát triển
+
+``` 
+
 # Cài đặt Ubuntu 16.0.4 trên VMware Worktation 12 pro
 
 ## Các bước cài đặt : 
