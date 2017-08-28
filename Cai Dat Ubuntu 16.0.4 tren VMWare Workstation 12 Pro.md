@@ -15,6 +15,12 @@ thể tận dụng tài năng của những nhà phát triển ở bên ngoài t
 mà không cần phải tự mình phát triển
 
 ``` 
+## Cấu Hình Máy Tính Cần Thiết Để Cài Đặt Ubuntu 16.0.4 
+- CPU : core dual tối thiểu 2 GHz hoặc cao hơn.
+- RAM: 2GB trở lên.
+- 25GB phân vùng trống đề cài đặt Ubuntu.
+- Ổ quang đọc đĩa DVD/CD, cổng USB để cài đặt từ đĩa hoặc USB, các thiết bị ổ cứng gắn ngoài.
+- Máy tính cần có kết nối internet để cập nhật, tải các phần mềm cài đặt.
 
 # Cài đặt Ubuntu 16.0.4 trên VMware Worktation 12 pro
 
