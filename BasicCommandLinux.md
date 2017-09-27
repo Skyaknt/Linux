@@ -38,52 +38,65 @@ diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz
 
 ![Imgur](https://i.imgur.com/kxhV03P.png)
 
+**ls**
+
+![Imgur](https://i.imgur.com/jo4N4rt.png)
+
+**tree**
+
+![Imgur](https://i.imgur.com/vJPhtfo.png)
+
+
 ## Gán liên kết mềm và liên kết cứng 
 
 - Lệnh `ln` có thể sử dụng để tạo các liên kết cứng hoặc mềm :
 
 Giả sử một file tên file1.txt đã tồn tại. Với liên kết cứng - file2.txt sẽ được tạo bằng lệnh :
 
-` ln file1.txt file2.txt `
+` ln songle.ssh song `
 
-	-  Note : liên kết cứng sẽ tạo ra 1 file vật lí cùng trỏ tới mục nhập inode của file vật lí gốc. 
-	2 file sẽ cùng tồn tại đồng đẳng như nhau, **nếu xóa file gốc thì dữ liệu hoàn toàn không bị mất** nó chỉ mất
-	khi không còn liên kết nào đến inode nữa .
+-  Note : liên kết cứng sẽ tạo ra 1 file vật lí cùng trỏ tới mục nhập inode của file vật lí gốc. 
+2 file sẽ cùng tồn tại đồng đẳng như nhau, **nếu xóa file gốc thì dữ liệu hoàn toàn không bị mất** nó chỉ mất
+khi không còn liên kết nào đến inode nữa .
+	
+![Imgur](https://i.imgur.com/Tdhcez8.png)
 
 ```
-# ls -l file*
--rw-r--r--. 2 root root 604 Feb 16 11:49 file1.txt
--rw-r--r--. 2 root root 604 Feb 16 11:49 file2.txt
-# ls -li file*
-134415251 -rw-r--r--. 2 root root 604 Feb 16 11:49 file1.txt
-134415251 -rw-r--r--. 2 root root 604 Feb 16 11:49 file2.txt
+root@ubuntu:/home/songle# ls -l song*
+-rw-r--r-- 2 root root 7 Sep 26 22:29 song
+-rw-r--r-- 2 root root 7 Sep 26 22:29 songle.ssh
+
+root@ubuntu:/home/songle# ls -li song*
+1703952 -rw-r--r-- 2 root root 7 Sep 26 22:29 song
+1703952 -rw-r--r-- 2 root root 7 Sep 26 22:29 songle.ssh
 ```
 
 - Lựa chọn `-i` sẽ cho in ra cột đầu tiên của số i-node( điểm truy cập riêng biệt của mỗi file ).
-Với 2 file file1.txt và file2.txt ở trên, chúng có cùng một i-node để gọi tới, là 1 file gốc nhưng nó sẽ có 
+Với 2 file songle.ssh và song ở trên, chúng có cùng một i-node để gọi tới, là 1 file gốc nhưng nó sẽ có 
 nhiều hơn 1 tên gắn liền với nó.
 
 ```
-# ln file1.txt file3.txt
-# ls -li file*
-134415251 -rw-r--r--. 3 root root 604 Feb 16 11:49 file1.txt
-134415251 -rw-r--r--. 3 root root 604 Feb 16 11:49 file2.txt
-134415251 -rw-r--r--. 3 root root 604 Feb 16 11:49 file3.txt
+root@ubuntu:/home/songle# ls -li song*
+1703952 -rw-r--r-- 3 root root 7 Sep 26 22:29 song
+1703952 -rw-r--r-- 3 root root 7 Sep 26 22:29 song1
+1703952 -rw-r--r-- 3 root root 7 Sep 26 22:29 songle.ssh
+
 ```
-- Nếu thay đổi file file3.txt , thì các file1.txt và file2.txt cũng sẽ bị thay đổi theo.
+- Nếu thay đổi file song1 , thì các songle.ssh và song cũng sẽ bị thay đổi theo.
 
 **Link mềm ( symbolic or soft link) được tạo bằng option `-s` :**
 
 ```
-# ln -s file1.txt file4.txt
-# ls -li file*
-134415251 -rw-r--r--. 3 root root 644 Feb 16 11:59 file1.txt
-134415251 -rw-r--r--. 3 root root 644 Feb 16 11:59 file2.txt
-134415251 -rw-r--r--. 3 root root 644 Feb 16 11:59 file3.txt
-134415252 lrwxrwxrwx. 1 root root   9 Feb 16 11:59 file4.txt -> file1.txt
+root@ubuntu:/home/songle# ln -s songle.ssh songle2
+root@ubuntu:/home/songle# ls -li song*
+1703952 -rw-r--r-- 3 root root  7 Sep 26 22:29 song
+1703952 -rw-r--r-- 3 root root  7 Sep 26 22:29 song1
+1703951 lrwxrwxrwx 1 root root 10 Sep 26 23:55 songle2 -> songle.ssh
+1703952 -rw-r--r-- 3 root root  7 Sep 26 22:29 songle.ssh
+
 ```
 
-- Chú ý rằng file4.txt không phải là một file bình thường, nó chỉ là một liên kết tới file1 và nó có một số inode riêng. 
+- Chú ý rằng songle2 không phải là một file bình thường, nó chỉ là một liên kết tới songle.ssh và nó có một số inode riêng. 
 Link mềm không tạo ra một bản sao khác như link cứng, mà chỉ tạo một liên kết giống như 1 lối tắt tới file1 ở ngoài thư mục home.
 Khi xóa file1 gốc thì file4 cũng sẽ không truy cập được nữa.
 - Không giống link cứng, link mềm có thể trỏ tới các file con ở những file hệ thống khác nhau. Nó có thể trỏ đến
