@@ -97,8 +97,8 @@ root@ubuntu:/home/songle# ls -li song*
 ```
 
 - Chú ý rằng songle2 không phải là một file bình thường, nó chỉ là một liên kết tới songle.ssh và nó có một số inode riêng. 
-Link mềm không tạo ra một bản sao khác như link cứng, mà chỉ tạo một liên kết giống như 1 lối tắt tới file1 ở ngoài thư mục home.
-Khi xóa file1 gốc thì file4 cũng sẽ không truy cập được nữa.
+Link mềm không tạo ra một bản sao khác như link cứng, mà chỉ tạo một liên kết giống như 1 lối tắt tới songle.ssh ở trong thư mục.
+Khi xóa song.ssh gốc thì songle2 cũng sẽ không truy cập được nữa.
 - Không giống link cứng, link mềm có thể trỏ tới các file con ở những file hệ thống khác nhau. Nó có thể trỏ đến
 liên kết đã tạo nếu file gốc còn tồn tại, trường hợp file gốc không còn thì link đó sẽ trở thành link treo ( dangling link)
  và không trỏ tới file nào hết.
