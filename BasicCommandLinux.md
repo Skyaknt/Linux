@@ -29,8 +29,6 @@ diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz
 ## Truy cập thư mục :
 
 **Các lệnh sau dùng để di chuyển giữa các thư mục:**
-![Imgur](https://i.imgur.com/wG8NdAN.png)
-
 
 ![Imgur](https://i.imgur.com/wG8NdAN.png)
 
@@ -74,7 +72,7 @@ nhiều hơn 1 tên gắn liền với nó.
 ```
 - Nếu thay đổi file file3.txt , thì các file1.txt và file2.txt cũng sẽ bị thay đổi theo.
 
-**Link mềm ( symbolic or soft link) được tạo bằng option `-s` :
+**Link mềm ( symbolic or soft link) được tạo bằng option `-s` :**
 
 ```
 # ln -s file1.txt file4.txt
