@@ -1,6 +1,12 @@
 # Linux - Basic Commands
 
-## Xác định vị trí các ứng dụng, dịch vụ :
+#### [Xác định vị trí các ứng dụng, dịch vụ](#xd)
+#### [Truy cập thư mục](#tc)
+#### [Xem danh sách các file hệ thống](#x)
+#### [Gán liên kết mềm và liên kết cứng ](#g)
+
+
+### <a name="xd"> Xác định vị trí các ứng dụng, dịch vụ : </a>
 - Phụ thuộc vào từng thành phần và mức ảnh hưởng tới hệ thống mà các chương trình và các gói phần mềm dược lưu
 trên nhiều thư mục khác nhau. Nhìn chung các chương trình thực thi sẽ được lưu trên các đường dẫn sau : 
 ```
@@ -26,13 +32,13 @@ diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz
 
 ```
 
-## Truy cập thư mục :
+### <a name="tc"> Truy cập thư mục : </a>
 
 **Các lệnh sau dùng để di chuyển giữa các thư mục:**
 
 ![Imgur](https://i.imgur.com/wG8NdAN.png)
 
-## Xem danh sách các file hệ thống
+ ### <a name="x">Xem danh sách các file hệ thống </a>
 
 - Lệnh `tree` rất hữu dụng để nhìn một cách tổng thể cấu trúc của các thư mục trong hệ thống :
 
@@ -47,7 +53,7 @@ diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz
 ![Imgur](https://i.imgur.com/vJPhtfo.png)
 
 
-## Gán liên kết mềm và liên kết cứng 
+ ### <a name="g"> Gán liên kết mềm và liên kết cứng </a>
 
 - Lệnh `ln` có thể sử dụng để tạo các liên kết cứng hoặc mềm :
 
