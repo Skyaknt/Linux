@@ -26,7 +26,9 @@ diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz
 
 ```
 
-## Truy cập thư mục
+## Truy cập thư mục :
 
 **Các lệnh sau dùng để di chuyển giữa các thư mục:**
+![Imgur](https://i.imgur.com/wG8NdAN.png)
+
 
