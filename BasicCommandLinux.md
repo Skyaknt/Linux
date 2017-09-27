@@ -51,7 +51,7 @@ diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz
 
 - Lệnh `ln` có thể sử dụng để tạo các liên kết cứng hoặc mềm :
 
-Giả sử một file tên file1.txt đã tồn tại. Với liên kết cứng - file2.txt sẽ được tạo bằng lệnh :
+Giả sử một file tên ` songle.ssh ` đã tồn tại. Với liên kết cứng ` song ` sẽ được tạo bằng lệnh :
 
 ` ln songle.ssh song `
 
