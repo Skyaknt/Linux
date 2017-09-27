@@ -5,6 +5,7 @@
 #### [Xem danh sách các file hệ thống](#x)
 #### [Gán liên kết mềm và liên kết cứng ](#g)
 
+<hr>
 
 ### <a name="xd"> Xác định vị trí các ứng dụng, dịch vụ : </a>
 - Phụ thuộc vào từng thành phần và mức ảnh hưởng tới hệ thống mà các chương trình và các gói phần mềm dược lưu
