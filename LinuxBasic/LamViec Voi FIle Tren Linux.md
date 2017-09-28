@@ -240,13 +240,17 @@ root@ubuntu:/home/songle#
 Theo mặc định nó đặt lại một mốc của tập tin để phù hợp với thời gian hiện tại.
 
 - Tuy nhiên, bạn có thể tạo một file mới bằng lệnh `touch`: `touch <filename>`
+
 `
 root@ubuntu:/home/songle# touch van.txt
 `
+
 - `-t` cho phép bạn đặt ngày và mốc thời gian cho file . Để đặt một mốc cụ thể cho một file, sử dụng lệnh sau :
+
 `
 root@ubuntu:/home/songle# touch -t 03201600 van.txt
 `
+
 Lệnh trên đặt mốc thời gian cho file van.txt là 4 p.m, March 20th ( 03 20 1600 )
 
 - Lệnh `mkdir` được sử dụng để tạo các ` thư mục(directory)` . Để xóa thư mục sử dụng `rmdir`. Thư mục đó khi tạo phải là 
