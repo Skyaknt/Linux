@@ -52,6 +52,7 @@ $ cmd 2>&1 hi.ssh
 hoặc
 `
 $ cmd &> hi.ssh
+`
 
 ### Đường ống dẫn ( pipes )
 - Kí hiệu "|"
@@ -77,9 +78,10 @@ phù hợp với tất cả đầu vào bao gồm cả các kí tự đặc bi�
 thống Linux chạy tự động chương trình đó 1 ngày 1 lần. Tuy nhiên, bạn có thể cập nhật nó bất cứ lúc nào bằng cách
 chạy `updatedb` từ lệnh với quyền `root user` .
 
-`# yum install -y mlocate
-# updatedb
-# locate zip
+`
+$yum install -y mlocate
+$updatedb
+$locate zip
 `
 
 Kết quả của lệnh `locate` đôi khi sẽ cho ra danh sách rất lớn các kết quả. Sử dụng `grep` để lọc các file, thư mục có từ `bin`:
