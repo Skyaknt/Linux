@@ -11,7 +11,7 @@
 - Sử dụng ">" để chuyển hướng các kết quả từ việc thực thi lệnh (stdout) :
 Ví dụ : Thực thi lệnh ls -l được ghi vào file test.txt thay vì in thẳng ra màn hình :
 
-`
+```
 root@ubuntu:/home/songle# vi test.txt
 root@ubuntu:/home/songle# ls -l > test.txt
 root@ubuntu:/home/songle# ls
@@ -24,7 +24,7 @@ drwxr-xr-x 3 root root 4096 Sep 26 21:50 demo1
 -rw-r--r-- 2 root root   10 Sep 27 00:00 song1
 lrwxrwxrwx 1 root root   10 Sep 26 23:55 songle2 -> songle.ssh
 -rw-r--r-- 1 root root    0 Sep 28 00:40 test.txt
-`
+```
 
 - Chú ý : khi file test.txt đã có nội dung, nếu ta ghi thẳng vào thì nội dung cũ sẽ mất. Để khắc phục điều này
 ta sử dụng ">>" - nó sẽ ghi thêm dữ liệu vào cuối file mà không thay thế dữ liệu cũ.
@@ -37,16 +37,19 @@ Ta có thể chuyển hướng một thông báo lỗi tới một file text đ�
 Ví dụ :  khi muốn đọc file laptop.ssh bằng lệnh cat, nhưng trong thư mục không có file này, do đó sẽ có lỗi báo 
 ra màn hình. Nếu không muốn nhìn thấy thông báo này, ta chuyển hướng tới /dev/null 
 
-`
+```
 root@ubuntu:/home/songle# cat laptop.ssh
+
 cat: laptop.ssh: No such file or directory
+
 root@ubuntu:/home/songle# cat laptop.ssh 2>/dev/null
+
 root@ubuntu:/home/songle#
+```
 
-`
 *Chúng ta cũng có thể chuyển hướng stderr và stdout vào cùng 1 tập tin bằng cách sau:*
-`
 
+`
 $ cmd 2>&1 hi.ssh
 `
 hoặc
@@ -145,15 +148,17 @@ root@ubuntu:/var# find /usr -type d -name bin
 
 Tìm file ở một một thư mục khác :
 
-`
+```
 root@ubuntu:/var# find /home/songle -type f -name hi.ssh
+
 /home/songle/hi.ssh
-`
+```
 Một tiện ích khác của lệnh `find` là có thể đồng thời vừa tìm, vừa chạy các lệnh thực thi lên file đó.
 Ví dụ, tìm file và xóa tất cả các file kết thúc với đuôi `.swp` :
 
 `
 $ find -name "*.swp" -exec rm {} ’;’
+
 $ find -name "*.swp" -ok rm {} \;
 `
 + 2 lệnh trên về nội dung là giống nhau, khác nhau ở chỗ lệnh dưới thì sẽ yêu cầu người dùng cho phép trước khi chạy.
