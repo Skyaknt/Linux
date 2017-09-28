@@ -1,7 +1,7 @@
 # LinuxBasic
 
 [1. Basic Commands](https://github.com/Skyaknt/Linux/blob/master/BasicCommandLinux.md) 
-[2. Working With File](Working With File.md)
+[2. Working With File](./Linux/Working With File.md)
 
 3. [File System]()
 4. [File Permissions]()
