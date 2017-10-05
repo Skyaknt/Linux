@@ -1,4 +1,5 @@
-# Làm việc với files trên Linux
+# Làm việc với files trên Linux - Working With Files
+
 
 ## Dòng dữ liệu ( the file streams )
 - Khi các lệnh được thực thi, theo mặc định thì sẽ có 3 luồng cơ bản:
