@@ -4,7 +4,7 @@
 
 [2. Working With File](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/LamViec%20Voi%20FIle%20Tren%20Linux.md)
 
-3. [File System]()
+[3. File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/3.%20Filesystem%20Structure.md)
 
 4. [File Permissions]()
 
