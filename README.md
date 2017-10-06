@@ -2,7 +2,7 @@
 
 [1. Basic Commands](https://github.com/Skyaknt/Linux/blob/master/BasicCommandLinux.md) 
 
-[2. Working With File](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/LamViec%20Voi%20FIle%20Tren%20Linux.md)
+[2. Working With File](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/2.%20Working%20With%20Files.md)
 
 [3. File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/3.%20Filesystem%20Structure.md)
 
