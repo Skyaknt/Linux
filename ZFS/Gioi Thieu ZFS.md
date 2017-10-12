@@ -113,23 +113,23 @@ lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 	
 - **RAID-Z** : Một bản nâng cấp từ RAID 5
 	
-![Imgur](https://i.imgur.com/iQhLaYW.gif)
+	![Imgur](https://i.imgur.com/iQhLaYW.gif)
 	
-+ Tránh được "Write hone" bằng cách sử dụng COW - Copy on write ( khi mất điện đột ngột lúc đang ghi dữ liệu, 
-sẽ có trường hợp không thể biết được data blocks hoặc parity blocks nào vừa được ghi trùng với dữ liệu đã được
-ghi trong các ổ stripe, và không xác định được là dữ liệu nào đã bị lỗi, đó gọi là hiện tượng "write hole" ).
-+ Số đĩa cần : >= 3 đĩa 
+	+ Tránh được "Write hone" bằng cách sử dụng COW - Copy on write ( khi mất điện đột ngột lúc đang ghi dữ liệu, 
+	sẽ có trường hợp không thể biết được data blocks hoặc parity blocks nào vừa được ghi trùng với dữ liệu đã được
+	ghi trong các ổ stripe, và không xác định được là dữ liệu nào đã bị lỗi, đó gọi là hiện tượng "write hole" ).
+	+ Số đĩa cần : >= 3 đĩa 
 	=> Vẫn đảm bảo tốc độ đọc/ghi bằng stripe
 	=> Khi một trong 3 ổ đĩa hỏng, dữ liệu vẫn được phục hồi. Trừ khi cả 3 ổ cùng hỏng.
-+ Nếu muốn thêm an toàn, có thể dùng RAID 6 ( RAID-Z2 trên cơ sở của ZFS) để có 2 lần dự phòng.
+	+ Nếu muốn thêm an toàn, có thể dùng RAID 6 ( RAID-Z2 trên cơ sở của ZFS) để có 2 lần dự phòng.
 
 - **RAID-Z 2** và **RAID-Z 3** : Về cơ bản gống RAID-Z tuy nhiên sẽ có 2 - 3 ổ đĩa được dùng để dự phòng parity.
 	
-![Imgur](https://i.imgur.com/EfR6V1S.gif)	
+	![Imgur](https://i.imgur.com/EfR6V1S.gif)	
 	
-+ **RAID-Z 2** : 
+	+ **RAID-Z 2** : 
 	+ Số đĩa cần : >= 4
-+ **RAID-Z 3** :
+	+ **RAID-Z 3** :
 	+ Số đĩa cần : >= 5
 	=> Sử dụng trong môi trường có dữ liệu quan trọng.
 		
