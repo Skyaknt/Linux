@@ -1,4 +1,4 @@
-# Tìm hiểu ZFS ( Z- Filesystems ) 
+# Tìm hiểu ZFS ( Z - Filesystem ) 
 
 
 ### 1. Định nghĩa :
@@ -36,6 +36,7 @@ nó sẽ lấy dữ liệu chính xác từ một bản sao dự phòng khác v�
 - ZFS là một dạng file hệ thống tệp giao dịch
 	
 - Sử dụng cơ chế COW ( coppy on write ) để quản lí bằng cách sử dụng các bản sao của filesystem gốc.
+
 		
 	+ Dữ liệu gốc không bị ghi đè lên.
 	
@@ -43,6 +44,8 @@ nó sẽ lấy dữ liệu chính xác từ một bản sao dự phòng khác v�
 		
 	+ Khi xảy ra sự cố như mất điện, hệ thống treo.. file system gốc sẽ không bị ảnh hưởng,
 		chỉ mất đi các thông tin mới được chỉnh sửa trên bản sao của nó.
+		
+ ![Imgur](https://i.imgur.com/Ibs6UQr.png)
  
 Ví dụ :
 	
