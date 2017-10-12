@@ -1,14 +1,47 @@
 ## II. Cài đặt ZFS trên Ubuntu
 
 ### 1. Yêu cầu :
+
 - Định dạng filesystem : ext4
 - Ubuntu phiên bản 64-bit
+
+**Mô hình** :
+
+	- 4 ổ đĩa
+	- Ubuntu 16.0.4 server LTS 64-bit
+
 ### 2. Cài đặt :
 
-Ubuntu : 
+#### 2.1 Cài đặt ZFS cơ bản với định dạng RAID 0:
+
+
+- Bắt đầu cài zfs bằng lệnh :
+
 `
-$ sudo apt install zfs
+$ sudo apt install zfs -y
 `
+
+- Sau khi cài xong, kiểm tra xem kernel đã được tải vào và khởi chạy chưa bằng lệnh  `dmesg | grep ZFS`
+
+```
+[  216.925716] ZFS: Loaded module v0.6.5.6-0ubuntu16, ZFS pool version 5000, ZFS filesystem version 5
+
+```
+
+- Kiểm tra các ổ đĩa trên hệ thống bằng lệnh : `fdisk -l | grep /dev/`
+
+```
+root@ubuntu:~# fdisk -l | grep /dev/
+Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors
+/dev/sda1  *        2048 37750783 37748736  18G 83 Linux
+/dev/sda2       37752830 41940991  4188162   2G  5 Extended
+/dev/sda5       37752832 41940991  4188160   2G 82 Linux swap / Solaris
+Disk /dev/sdb: 20 GiB, 21474836480 bytes, 41943040 sectors
+Disk /dev/sdc: 20 GiB, 21474836480 bytes, 41943040 sectors
+Disk /dev/sdd: 20 GiB, 21474836480 bytes, 41943040 sectors
+Disk /dev/sde: 20 GiB, 21474836480 bytes, 41943040 sectors
+
+```
 
 - Tạo zpool với các ổ đĩa : sdb, sdc, sdd, sde :
 
@@ -16,7 +49,7 @@ $ sudo apt install zfs
 $ sudo zpool create -f  ZFS-demo /dev/sdb /dev/sdc /dev/sdd /dev/sde
 `
 
-+ tùy chọn " -f " sẽ ghi đè lên bất cứ lỗi nào xuất hiện như trên đĩa đã có dữ liệu ..
++ Tùy chọn " -f " sẽ ghi đè lên bất cứ lỗi nào xuất hiện như trên đĩa đã có dữ liệu ..
 + ZFS-demo là tên của pool
 
 - Sau khi đã tạo xong pool, kiểm tra nó bằng lệnh `df` hoặc `sudo zfs list` :
@@ -30,19 +63,22 @@ Filesystem      Size  Used Avail Use% Mounted on
 ZFS-demo         78G     0   78G   0% /ZFS-demo
 ```
 
-+ Như bạn có thể thấy, ZFS-demo đã được tự động mount và sẵn sàng để sử dụng.
++ Như bạn có thể thấy, ZFS-demo đã được tự động mount vào thư mục /ZFS-demo và sẵn sàng để sử dụng.
 
 - Nếu bạn muốn xem những ổ đĩa nào đang được sử dụng trong pool , dùng lệnh ` sudo zpool status` :
+
 ![Imgur](https://i.imgur.com/r2z9fWC.png)
 
 - Chúng ta vừa tạo một pool gồm 4 ổ đĩa cứng với dung lượng là 78G theo hình thức striped pool. 
-Trong ZFS, mặc định khi tạo pool , hình thức đọc/ghi dữ liệu sẽ là stripped . 
+Trong ZFS, mặc định khi tạo pool , hình thức đọc/ghi dữ liệu sẽ là **stripe** ( khác với LVM là linear ) . 
 
-+ Stripped có nghĩa là mọi dữ liệu đọc/ghi vào mountpoint đều dựa diễn ra đồng thời ở tất cả các ổ
++ Stripe có nghĩa là mọi dữ liệu đọc/ghi vào mountpoint đều dựa diễn ra đồng thời ở tất cả các ổ
 cứng trong pool. Ví dụ ta tạo 1 file 3KB trên /ZFS-demo , 1 kb sẽ lưu trên sdb, 1 kb trên sdc, 1 kb trên sde.
 Tốc độ đọc/ghi sẽ nhanh gấp 3 lần với hình thức Linear. 
 
-- Tuy nhiên, khi một ổ trong 3 bị hỏng dữ liệu sẽ bị mất đi tính toàn vẹn và có thể sẽ không sử dụng
+#### 2.2 Tạo RAID-Z 
+
+- Ở mô hình trên sử dụng RAID 0, khi một ổ trong 3 bị hỏng dữ liệu sẽ bị mất đi tính toàn vẹn và có thể sẽ không sử dụng
 được nữa. Để khắc phục điều này, ta có một cơ chế khác : **RAID-Z pool** .
 
 + Đầu tiên, xóa bỏ zpool mới tạo là ZFS-demo :
@@ -72,3 +108,5 @@ các thông tin dự phòng ( parity information ).
 - Việc thêm bộ nhớ vào ZFS pool rất dễ dàng : 
 
 ![Imgur](https://i.imgur.com/O0cQ3Ky.png)
+
+
