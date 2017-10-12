@@ -20,10 +20,15 @@ $ sudo zpool create -f  ZFS-demo /dev/sdb /dev/sdc /dev/sdd /dev/sde
 + ZFS-demo là tên của pool
 
 - Sau khi đã tạo xong pool, kiểm tra nó bằng lệnh `df` hoặc `sudo zfs list` :
-`df -h /ZFS-demo` :
+
+
+```
+$ df -h /ZFS-demo
 
 Filesystem      Size  Used Avail Use% Mounted on
+
 ZFS-demo         78G     0   78G   0% /ZFS-demo
+```
 
 + Như bạn có thể thấy, ZFS-demo đã được tự động mount và sẵn sàng để sử dụng.
 
@@ -46,7 +51,6 @@ Tốc độ đọc/ghi sẽ nhanh gấp 3 lần với hình thức Linear.
 `$ sudo zpool destroy ZFS-demo`
 
 +  Sử dụng 3 ổ đĩa để tạo một RAID-Z pool .
-```
 
 `$ sudo zpool create -f ZFS-demo raidz /dev/sdb /dev/sdc /dev/sdd`
 
