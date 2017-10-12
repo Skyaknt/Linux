@@ -98,8 +98,8 @@ Tuy nhiên khi dữ liệu trong thư mục gốc thay đổi, bản snapshot s�
 		
 ### 3. Cơ chế :
 
-- ZFS cung cấp một phương pháp đọc/ghi dữ liệu với nhiều mountpoints, dàn đều trên các ổ đĩa. Các ổ đĩa có thể được gộp lại 
-thành các nhóm khác nhau để phù hợp với các cơ chế :
+**ZFS cung cấp một phương pháp đọc/ghi dữ liệu với nhiều mountpoints, dàn đều trên các ổ đĩa. Các ổ đĩa có thể được gộp lại 
+thành các nhóm khác nhau để phù hợp với các cơ chế :**
 
 - **Mirror** : Dữ liệu sẽ được sao lưu như nhau trên các ổ đĩa - tương tự như RAID 1. Đây chỉ đơn giản là một bản sao của một 
 đĩa khác mỗi khi dữ liệu bị thay đổi.
@@ -127,10 +127,10 @@ lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 	
 	![Imgur](https://i.imgur.com/EfR6V1S.gif)	
 	
-	+ **RAID-Z 2** : 
-	+ Số đĩa cần : >= 4
+	- **RAID-Z 2** : 
+	Số đĩa cần : >= 4
 	+ **RAID-Z 3** :
-	+ Số đĩa cần : >= 5
+	Số đĩa cần : >= 5
 	=> Sử dụng trong môi trường có dữ liệu quan trọng.
 		
 ## Tham khảo : 
