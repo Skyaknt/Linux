@@ -46,7 +46,8 @@ Tốc độ đọc/ghi sẽ nhanh gấp 3 lần với hình thức Linear.
 được nữa. Để khắc phục điều này, ta có một cơ chế khác : **RAID-Z pool** .
 
 + Đầu tiên, xóa bỏ zpool mới tạo là ZFS-demo :
-(*) Đảm bảo rằng bạn không ở trong thư mục mountpoint và không có tiến trình nào đang sử dụng trong pool.
+
+*Đảm bảo rằng bạn không ở trong thư mục mountpoint và không có tiến trình nào đang sử dụng trong pool.*
 
 `$ sudo zpool destroy ZFS-demo`
 
