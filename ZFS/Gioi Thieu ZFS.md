@@ -8,6 +8,16 @@ Mỗi block dữ liệu (block of data) được đọc/ghi bởi cơ chế ZFS 
 lỗi xảy ra.
 
 - ZFS có thể cài đặt trên hầu hết các hệ thống của Linux như Debain/Ubuntu và Red Hat/CentOS.
+- Các thiết bị ZFS ảo ( ZFS Vitual Devices - ZFS VDEVs) : Một VDEV là một thiết bị siêu dữ liệu có thể đại diện cho một hoặc nhiều thiết bị . **ZFS hỗ trợ 7 loại VDEV :**
+	
+	- File ( Tệp được gán trước )
+	- Thiết bị vật lý ( HDD, SSD, PCIe, NVME, etc )
+	- Các bản sao ( Mirror) 
+	- Phần mềm ZFS  như raid1 , raid2, raid3 cùng với các phân vùng parity dựa trên cơ chế RAID
+	- Các phần thiết bị bổ trợ kịp thời ( Hot Spare ) dùng cho các phần mềm ZFS
+	- Cache - Một thiết bị sử dụng cho cấp độ 2 ( ZFS L2ARC )
+	- Log - thông số log ZFS ( ZFS ZIL)
+
 
 ### 2. Đặc điểm :
 
@@ -56,7 +66,7 @@ sau này process nào cần sửa chữa dữ liệu thì nó sẽ copy AS ra m�
  
 		
 		
-#### 2.4 Unparalledled Scalability 
+#### 2.4 Unparalelled Scalability 
 
 - Khả năng mở rộng tuyệt vời.
 	
@@ -74,7 +84,29 @@ sau này process nào cần sửa chữa dữ liệu thì nó sẽ copy AS ra m�
 	
 Tuy nhiên khi dữ liệu trong thư mục gốc thay đổi, bản snapshot sẽ sử dụng thêm bộ  nhớ để lưu những thay đổi đó.
 => snapshot sẽ ngăn chặn việc dữ liệu bị giải phóng trở lại pool.
-	
+
+- Ví dụ : tạo snapshot cho file project trong pool "mypool" :
+
+`$ sudo zfs snapshot -r mypool/projects@snap1`
+
++ Xem danh sách snapshot :
+
+```
+$ sudo zfs list -t snapshot
+NAME                     USED  AVAIL  REFER  MOUNTPOINT
+mypool/projects@snap1   8.80G      -  8.80G  -
+```
++ Giả sử trường hợp xảy ra sự cố và mất file, ta khôi phục lại từ snapshot bằng cách :
+
+```
+$ rm -rf /mypool/projects
+$ sudo zfs rollback mypool/projects@snap1
+```
++ Xóa snapshot :
+
+`$ Sudo zfs destroy mypool/projects@snap1`
+
+
 	
 #### 2.6 Simplified Administration
 
@@ -94,6 +126,7 @@ Tuy nhiên khi dữ liệu trong thư mục gốc thay đổi, bản snapshot s�
 		
 	+ Filesystems cũng như các file bình thường, không có dung lượng quá lớn vì vậy bạn có thể 
 	tạo các filesystem cho mỗi user, project, workspace..
+	
 		
 		
 ### 3. Cơ chế :
@@ -101,15 +134,34 @@ Tuy nhiên khi dữ liệu trong thư mục gốc thay đổi, bản snapshot s�
 **ZFS cung cấp một phương pháp đọc/ghi dữ liệu với nhiều mountpoints, dàn đều trên các ổ đĩa. Các ổ đĩa có thể được gộp lại 
 thành các nhóm khác nhau để phù hợp với các cơ chế :**
 
-- **Mirror** : Dữ liệu sẽ được sao lưu như nhau trên các ổ đĩa - tương tự như RAID 1. Đây chỉ đơn giản là một bản sao của một 
+*( VDEVs : Virtual Devices)*
+
+- **Mirrored VDEVs** : Dữ liệu sẽ được sao lưu như nhau trên các ổ đĩa - tương tự như RAID 1. Đây chỉ đơn giản là một bản sao của một 
 đĩa khác mỗi khi dữ liệu bị thay đổi.
 	+ Số đĩa cần : >= 2
 	=> Đảm bảo an toàn cho dữ liệu (  backup plan), nhưng cần nhiều dung lượng ổ đĩa.
 	
-- **Stripe** : Dữ liệu lưu trên tất cả các đĩa có sẵn cùng lúc - tương đương RAID 0. Trong một mảng có 2 ổ đĩa, một nửa dữ liệu
+`$ sudo zpool create example mirror /dev/sdb /dev/sdc`
+
+- **Striped VDEVs** : Dữ liệu lưu trên tất cả các đĩa có sẵn cùng lúc - tương đương RAID 0. Trong một mảng có 2 ổ đĩa, một nửa dữ liệu
 lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 	+ Số đĩa cần : >=2 đĩa
 	=> Tốc độ cao nhưng không có phương án dự phòng. Một ổ hỏng là dữ liệu sẽ bị hỏng.
+	
+`$ sudo zpool create example /dev/sdb /dev/sdc /dev/sdd /dev/sde`
+
+- **Striped Mirrored VDEVs : Giống với hình thức RAID 10, tạo các cặp thiết bị sau đó đọc/ghi dữ liệu theo hình thức stripe lên bản sao.
+Ví dụ, tạo một mirrored pool 2x2 theo hình thức striped :
+
+`sudo zpool create example mirror /dev/sdb /dev/sdc mirror /dev/sdd /dev/sde`
+
+hoặc
+
+```
+sudo zpool create example mirror /dev/sdb /dev/sdc
+sudo zpool add example mirror /dev/sdd /dev/sde
+```
+
 	
 - **RAID-Z** : Một bản nâng cấp từ RAID 5
 	
@@ -132,7 +184,121 @@ lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 	+ **RAID-Z 3** :
 	Số đĩa cần : >= 5
 	=> Sử dụng trong môi trường có dữ liệu quan trọng.
-		
+	
+- **Nested RAIDZ** : Giống với hình thức RAID50, RAID60, Striped RAIDZ nhưng cho hiệu quả cao hơn RAIDZ với giá thành thấp hơn. 
+Ví dụ, 2 X RAIDZ :
+
+```
+$ sudo zpool create example raidz /dev/sdb /dev/sdc /dev/sdd /dev/sde
+$ sudo zpool add example raidz /dev/sdf /dev/sdg /dev/sdh /dev/sdi
+```
+
+
+### 4. Mở rộng :
+
+#### 4.1 ZFS Intent Logs (ZIL):
+- ZIL có thể được thêm vào ZFS pool để tăng tốc độ ghi cho các cơ chế ZFS RAID.
+- ZIL thực chất là một cơ chế lưu lại các dữ liệu sẽ được đưa vào bộ nhớ ổ cứng , sau đó dữ liệu ấy khi hệ thống xảy ra sự cố, dữ liệu trong RAM bị mất do mất điện, thì ZFS sẽ truy xuất các dữ liệu đang lưu vào ZIL nhằm phục hồi lại những file đang nằm trong RAM.
+Tham khảo các hình thức của ZIL: https://pthree.org/2013/04/19/zfs-administration-appendix-a-visualizing-the-zfs-intent-log/
+- Ví dụ : Tạo phân vùng ổ SSDs cho pool "mypool" : 
+
+`$ sudo zpool add mypool log /dev/sdg -f`
+
+#### 4.2 ZFS Cache Drives
+
+- Bộ nhớ cache cung cấp một lớp bộ nhớ đệm nữa giữa ổ đĩa và dữ liệu. Nó rất hữu dụng cho việc cải thiện tốc độ đọc dữ liệu tĩnh( dữ liệ fixed cứng và không thể extend).
+
+- Ví dụ, để thêm bộ nhớ cache với ổ đĩa sử dụng là sdd ta dùng lệnh :
+
+`$ sudo zpool add mypool cache /dev/sdh`
+
+#### 4.3 ZFS File systems 
+
+- ZFS cho phép tạo mỗi pool tối đa là 2^64 file systems. 
+- Ví dụ : tạo 2 file systems trong pool "mypool":
+
+```
+sudo zfs create mypool/tmp
+sudo zfs create mypool/projects
+```
+
++ xóa file:
+`sudo zfs destroy mypool/tmp`
+
+- Mỗi ZFS file systems có thể điều chỉnh các đặc tính, ví dụ điều chinhr dung lượng lớn nhất của file là 10GB :
++ ` sudo zfs set quota=10G mypool/projects`
+hoặc đặt chế độ nén file :
++ `sudo zfs set compression=on mypool/projects`
+
+#### 4.4 ZFS Clones 
+
+- Một ZFS clone là một bản ghi có thể ghi được của một hệ thống tập tin với nội dung ban đầu của clone được giống hệt với hệ thống tập tin gốc.
+- Một **ZFS clone** chỉ có thể được tạo ra từ **ZFS snapshot** và **snapshot** không thể bị xóa cho đến khi các **clone** được tạo ra từ nó cũng bị phá hủy.
+
+- Ví dụ : để clone file projects từ pool "mypool", ta tạo **snapshot** cho nó sau đó **clone** :
+
+```
+$ sudo zfs snapshot -r mypool/projects@snap1
+$ sudo zfs clone mypool/projects@snap1 mypool/projects-clone
+```
+
+#### 4.5 ZFS Gửi và Nhận
+
+- ZFS send sẽ gửi một snapshot của filesystem tới một máy khác. 
+- ZFS receive nhận file và tạo ra một bản sao của snapshot đó thành ZFS filesystem ở máy nó.
+=> Thuận tiện cho việc backsup hoặc gửi những bản sao của filesystem từ máy này qua máy kia
+
+- Ví dụ : tạo snapshot và lưu nó thành một zfs file :
+
+```
+$ sudo zfs snapshot -r mypool/projects@snap2
+$ sudo zfs send mypool/projects@snap2 > ~/projects-snap.zfs
+```
++  Nhận nó lại :
+
+`
+sudo zfs receive -F mypool/projects-copy < ~/projects-snap.zfs
+`
+
+#### 4.6 ZFS Deduplication
+
+- ZFS dedup sẽ loại bỏ các khối giống hệt với các khối hiện tại và thay vào đó sẽ sử dụng một tham chiếu đến khối hiện tại.
+- Điều này tiết kiệm không gian trên thiết bị nhưng có chi phí lớn cho bộ nhớ.
+- Bảng dedup trong bộ nhớ sử dụng ~ 320 byte cho mỗi block. Các bảng lớn hơn là kích thước, hiệu suất viết chậm hơn sẽ trở thành
+- Ví dụ : Khởi chạy tiến trình dedup ở  **mypool/projects** :
+
+` $ sudo zfs set dedup=on mypool/projects`
+
+#### 4.7  ZFS Pool Scrubling
+
+- Để kiểm tra tính toàn vẹn dữ liệu trong pool.
+
+` $ sudo zpool scrub mypool`
+
++ Kiểm tra tính trạng thái pool :
+
+` $ sudo zpool status -v mypool`
+
+
+#### 4.8 ZFS Compression ( nén file )
+
+- System Files có thể nén một cách tự động
+- Hình thức nén file mặc định là **lz4** ( link 8 tham khảo ) . lz4 nhanh hơn đáng kể so với các tùy chọn khác trong khi vẫn hoạt động tốt; lz4 là sự lựa chọn an toàn nhất.
+- Ví dụ :
++ Thay đổi level nén :
+
+` $ sudo zfs set compression=gzip-9 mypool `
+
++ Đổi hình thức nén :
+
+` $sudo zfs set compression=lz4 mypool `
+
++ Kiểm tra cấp độ nén :
+
+`sudo zfs get compressratio`
+
+
+
 ## Tham khảo : 
 
 (1) https://viblo.asia/p/tan-man-ve-copy-on-write-WrJvYKXBeVO
@@ -142,3 +308,11 @@ lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 (3) http://www.geekyprojects.com/storage/what-is-raid-levels-and-types/
 
 (4) https://docs.oracle.com/cd/E23824_01/html/821-1448/gbciq.html
+
+(5) https://wiki.ubuntu.com/Kernel/Reference/ZFS
+
+(6) https://pthree.org/2013/04/19/zfs-administration-appendix-a-visualizing-the-zfs-intent-log/
+
+(7) https://constantin.glez.de/2011/07/27/zfs-to-dedupe-or-not-dedupe/
+
+(8) https://github.com/lz4/lz4
