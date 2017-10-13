@@ -226,13 +226,16 @@ sudo zfs create mypool/projects
 `sudo zfs destroy mypool/tmp`
 
 - Mỗi ZFS file systems có thể điều chỉnh các đặc tính, ví dụ điều chinhr dung lượng lớn nhất của file là 10GB :
-+ ` sudo zfs set quota=10G mypool/projects`
-hoặc đặt chế độ nén file :
-+ `sudo zfs set compression=on mypool/projects`
+` sudo zfs set quota=10G mypool/projects`
+
++  hoặc đặt chế độ nén file :
+
+`sudo zfs set compression=on mypool/projects`
 
 #### 4.4 ZFS Clones 
 
 - Một ZFS clone là một bản ghi có thể ghi được của một hệ thống tập tin với nội dung ban đầu của clone được giống hệt với hệ thống tập tin gốc.
+
 - Một **ZFS clone** chỉ có thể được tạo ra từ **ZFS snapshot** và **snapshot** không thể bị xóa cho đến khi các **clone** được tạo ra từ nó cũng bị phá hủy.
 
 - Ví dụ : để clone file projects từ pool "mypool", ta tạo **snapshot** cho nó sau đó **clone** :
