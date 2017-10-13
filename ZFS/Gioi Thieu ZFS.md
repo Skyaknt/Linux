@@ -41,6 +41,7 @@
 
 ### [Tham khảo](#tk)
 
+<hr>
 
 ### <a name="#dn"> 1. Định nghĩa : </a>
 
