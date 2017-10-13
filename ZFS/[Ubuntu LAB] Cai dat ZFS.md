@@ -1,4 +1,4 @@
-## II. Cài đặt ZFS trên Ubuntu
+## Thực hành cài đặt ZFS trên Ubuntu
 
 ### 1. Yêu cầu :
 
