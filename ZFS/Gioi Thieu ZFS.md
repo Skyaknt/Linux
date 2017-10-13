@@ -3,9 +3,9 @@
 
 ## Mục lục 
 
-[1. Định nghĩa](#dn)
+### [1. Định nghĩa](#dn)
 
-[2. Đặc điểm](#dd)
+### [2. Đặc điểm](#dd)
 
 [2.1 ZFS Pooled Storage](#ps)
 
@@ -19,9 +19,9 @@
 
 [2.6 Simplified Administration](#sa)
 
-[3. Cơ chế](#cc)
+### [3. Cơ chế](#cc)
 
-[4. Mở rộng](#mr)
+### [4. Mở rộng](#mr)
 
 [4.1 ZFS Intent Logs (ZIL)](#il)
 
@@ -39,7 +39,7 @@
 
 [4.8 ZFS Compression](#com)
 
-[Tham khảo](#tk)
+### [Tham khảo](#tk)
 
 
 ### <a name="#dn"> 1. Định nghĩa : </a>
