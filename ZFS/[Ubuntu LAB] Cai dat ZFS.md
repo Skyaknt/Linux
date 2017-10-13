@@ -110,3 +110,77 @@ các thông tin dự phòng ( parity information ).
 ![Imgur](https://i.imgur.com/O0cQ3Ky.png)
 
 
+### <a name="dr"> 3. Khôi phục dữ liệu từ zpool:
+	
+- Mô hình : 2 x 2 Mirror zpool ( RAID Z )
+
+```
+$ sudo zpool create mypool mirror /dev/sdc /dev/sdd mirror /dev/sde /dev/sdf -f
+$ sudo zpool status
+  pool: mypool
+ state: ONLINE
+  scan: none requested
+config:
+
+        NAME        STATE     READ WRITE CKSUM
+        mypool      ONLINE       0     0     0
+          mirror-0  ONLINE       0     0     0
+            sdc     ONLINE       0     0     0
+            sdd     ONLINE       0     0     0
+          mirror-1  ONLINE       0     0     0
+            sde     ONLINE       0     0     0
+            sdf     ONLINE       0     0     0
+```
+
+- Tính toán dung lượng pool với một số dữ liệu và check sum dữ liệu :
+
+```
+$ dd if=/dev/urandom of=/mypool/random.dat bs=1M count=4096
+$ md5sum /mypool/random.dat
+f0ca5a6e2718b8c98c2e0fdabd83d943  /mypool/random.dat
+```
+- Mô phỏng việc mất dữ liệu bằng cách ghi đè lên một trong những thiết bị VDEV bằng 0 :
+
+`$ sudo dd if=/dev/zero of=/dev/sde bs=1M count=8192`
+
+- Kiểm tra tính toàn vẹn :
+
+` $ sudo zpool scrub mypool`
+
+- Kiểm tra trạng thái pool:
+
+```
+$ sudo zpool status
+  pool: mypool
+ state: ONLINE
+status: One or more devices has experienced an unrecoverable error.  An
+        attempt was made to correct the error.  Applications are unaffected.
+action: Determine if the device needs to be replaced, and clear the errors
+        using 'zpool clear' or replace the device with 'zpool replace'.
+   see: http://zfsonlinux.org/msg/ZFS-8000-9P
+  scan: scrub in progress since Tue May 12 17:34:53 2015
+    244M scanned out of 1.91G at 61.0M/s, 0h0m to go
+    115M repaired, 12.46% done
+config:
+
+        NAME        STATE     READ WRITE CKSUM
+        mypool      ONLINE       0     0     0
+          mirror-0  ONLINE       0     0     0
+            sdc     ONLINE       0     0     0
+            sdd     ONLINE       0     0     0
+          mirror-1  ONLINE       0     0     0
+            sde     ONLINE       0     0   948  (repairing)
+            sdf     ONLINE       0     0     0
+```
+
+- Xóa thiết bị đó ra khỏi pool :
+
+` $ sudo zpool detach mypool /dev/sde`
+
+- Cắm nóng một thiết bị mới vào vị trí vừa xóa :
+
+` $ sudo zpool attach mypool /dev/sdf /dev/sde  -f`
+
+- Sử dụng scrub để khôi sửa chữa lại hệ thống 2x2 mirror :
+
+`$ sudo zpool scrub mypool`
