@@ -43,7 +43,7 @@
 
 <hr>
 
-### <a name="#dn"> 1. Định nghĩa : </a>
+### <a name="dn"> 1. Định nghĩa : </a>
 
 - ZFS là một trình quản lí ổ đĩa mà các lvm kết hợp với công nghệ RAID với chức năng đảm bảo tính toàn vẹn cho dữ liệu. 
 Mỗi block dữ liệu (block of data) được đọc/ghi bởi cơ chế ZFS dều được kiểm tra tính toàn vẹn và khôi phục lại nếu có 
@@ -62,9 +62,9 @@ lỗi xảy ra.
 
 
 
-### <a name="#dd"> 2. Đặc điểm : </a>
+### <a name="dd"> 2. Đặc điểm : </a>
 
-#### <a name="#ps">2.1 ZFS Pooled Storage </a>
+#### <a name="ps">2.1 ZFS Pooled Storage </a>
 
 - Quản lí bộ nhớ vật lí bằng hình thức storage pools .
 - Gộp các thiết bị lưu trữ thành 1 hoặc nhiều pool . Trong Pool sẽ hiển thị các đặc tính vật lí của bộ nhớ ( vị trí thiết bị, dữ liệu còn trống.. )
@@ -73,7 +73,7 @@ lỗi xảy ra.
 - Khi một thiết bị lưu trữ mới được thêm vào pool thì các file systems sẽ tự động sử dụng luôn không gian đĩa mới cho các tiến trình mà không 
 	cần phải cấu hình bằng lệnh .
 
-#### <a name="#cs"> 2.2 Checksums and Self- Healing Data </a>
+#### <a name="cs"> 2.2 Checksums and Self- Healing Data </a>
 
 - Với ZFS, tất cả dữ liệu và siêu dữ liệu ( metadata ) được phê duyệt bằng thuật toán người dùng có thể chọn để kiểm tra.
 	
@@ -84,7 +84,7 @@ lỗi xảy ra.
 - ZFS cung cấp một cơ chế tự phục hồi dữ liệu. Nó lưu dữ liệu với rất nhiều bản sao khác nhau trong pool, khi một bản bị bad blocks, 
 nó sẽ lấy dữ liệu chính xác từ một bản sao dự phòng khác và sửa chữa lại file bị hỏng.
 	
-#### <a name="#ts"> 2.3 Transactional Semantics </a>
+#### <a name="ts"> 2.3 Transactional Semantics </a>
 
 - ZFS là một dạng file hệ thống tệp giao dịch
 	
@@ -109,7 +109,7 @@ sau này process nào cần sửa chữa dữ liệu thì nó sẽ copy AS ra m�
  
 		
 		
-#### <a name="#us"> 2.4 Unparalelled Scalability </a>
+#### <a name="us"> 2.4 Unparalelled Scalability </a>
 
 - Khả năng mở rộng tuyệt vời.
 	
@@ -119,7 +119,7 @@ sau này process nào cần sửa chữa dữ liệu thì nó sẽ copy AS ra m�
 
 - Thư mục có thể mở rộng đến 248 ( 256 nghìn tỉ ) mục, và số lượng các file là không giới hạn trong một file hệ thống. 
 	
-#### <a name="#sn"> 2.5 ZFS Snapshots </a>
+#### <a name="sn"> 2.5 ZFS Snapshots </a>
 
 - Một snapshot là một bản sao chỉ có thể đọc của một system file hoặc volume.
 	
@@ -151,7 +151,7 @@ $ sudo zfs rollback mypool/projects@snap1
 
 
 	
-#### <a name="#sa"> 2.6 Simplified Administration </a>
+#### <a name="sa"> 2.6 Simplified Administration </a>
 
 - ZFS cung cấp một mô hình quả lí đơn giản hóa và khoa học :
 		
@@ -172,7 +172,7 @@ $ sudo zfs rollback mypool/projects@snap1
 	
 		
 		
-### <a name="#cc"> 3. Cơ chế : </a>
+### <a name="cc"> 3. Cơ chế : </a>
 
 **ZFS cung cấp một phương pháp đọc/ghi dữ liệu với nhiều mountpoints, dàn đều trên các ổ đĩa. Các ổ đĩa có thể được gộp lại 
 thành các nhóm khác nhau để phù hợp với các cơ chế :**
@@ -237,9 +237,9 @@ $ sudo zpool add example raidz /dev/sdf /dev/sdg /dev/sdh /dev/sdi
 ```
 
 
-### <a name="#mr"> 4. Mở rộng : </a>
+### <a name="mr"> 4. Mở rộng : </a>
 
-#### <a name="#il"> 4.1 ZFS Intent Logs (ZIL): </a>
+#### <a name="il"> 4.1 ZFS Intent Logs (ZIL): </a>
 
 - ZIL có thể được thêm vào ZFS pool để tăng tốc độ ghi cho các cơ chế ZFS RAID.
 
@@ -250,7 +250,7 @@ Tham khảo các hình thức của ZIL: https://pthree.org/2013/04/19/zfs-admin
 
 `$ sudo zpool add mypool log /dev/sdg -f`
 
-#### <a name="#cd"> 4.2 ZFS Cache Drives </a>
+#### <a name="cd"> 4.2 ZFS Cache Drives </a>
 
 - Bộ nhớ cache cung cấp một lớp bộ nhớ đệm nữa giữa ổ đĩa và dữ liệu. Nó rất hữu dụng cho việc cải thiện tốc độ đọc dữ liệu tĩnh( dữ liệ fixed cứng và không thể extend).
 
@@ -258,7 +258,7 @@ Tham khảo các hình thức của ZIL: https://pthree.org/2013/04/19/zfs-admin
 
 `$ sudo zpool add mypool cache /dev/sdh`
 
-#### <a name="#fs"> 4.3 ZFS File systems </a> 
+#### <a name="fs"> 4.3 ZFS File systems </a> 
 
 - ZFS cho phép tạo mỗi pool tối đa là 2^64 file systems. 
 - Ví dụ : tạo 2 file systems trong pool "mypool":
@@ -278,7 +278,7 @@ sudo zfs create mypool/projects
 
 `sudo zfs set compression=on mypool/projects`
 
-#### <a name="#clo"> 4.4 ZFS Clones </a> 
+#### <a name="clo"> 4.4 ZFS Clones </a> 
 
 - Một ZFS clone là một bản ghi có thể ghi được của một hệ thống tập tin với nội dung ban đầu của clone được giống hệt với hệ thống tập tin gốc.
 
@@ -291,7 +291,7 @@ $ sudo zfs snapshot -r mypool/projects@snap1
 $ sudo zfs clone mypool/projects@snap1 mypool/projects-clone
 ```
 
-#### <a name="#sar"> 4.5 ZFS Send and Receive
+#### <a name="sar"> 4.5 ZFS Send and Receive
 
 - ZFS send sẽ gửi một snapshot của filesystem tới một máy khác. 
 
@@ -311,7 +311,7 @@ $ sudo zfs send mypool/projects@snap2 > ~/projects-snap.zfs
 sudo zfs receive -F mypool/projects-copy < ~/projects-snap.zfs
 `
 
-#### <a name="#ded"> 4.6 ZFS Deduplication </a>
+#### <a name="ded"> 4.6 ZFS Deduplication </a>
 
 - ZFS dedup sẽ loại bỏ các khối giống hệt với các khối hiện tại và thay vào đó sẽ sử dụng một tham chiếu đến khối hiện tại.
 - Điều này tiết kiệm không gian trên thiết bị nhưng có chi phí lớn cho bộ nhớ.
@@ -320,7 +320,7 @@ sudo zfs receive -F mypool/projects-copy < ~/projects-snap.zfs
 
 ` $ sudo zfs set dedup=on mypool/projects`
 
-#### <a name="#psc"> 4.7  ZFS Pool Scrubling </a>
+#### <a name="psc"> 4.7  ZFS Pool Scrubling </a>
 
 - Để kiểm tra tính toàn vẹn dữ liệu trong pool.
 
@@ -331,7 +331,7 @@ sudo zfs receive -F mypool/projects-copy < ~/projects-snap.zfs
 ` $ sudo zpool status -v mypool`
 
 
-#### <a name="#com"> 4.8 ZFS Compression ( nén file ) </a>
+#### <a name="com"> 4.8 ZFS Compression ( nén file ) </a>
 
 - System Files có thể nén một cách tự động
 - Hình thức nén file mặc định là **lz4** ( link 8 tham khảo ) . lz4 nhanh hơn đáng kể so với các tùy chọn khác trong khi vẫn hoạt động tốt; lz4 là sự lựa chọn an toàn nhất.
@@ -350,7 +350,7 @@ sudo zfs receive -F mypool/projects-copy < ~/projects-snap.zfs
 
 
 
-## <a name="#tk"> Tham khảo : </a>
+## <a name="tk"> Tham khảo : </a>
 
 (1) https://viblo.asia/p/tan-man-ve-copy-on-write-WrJvYKXBeVO
 	
