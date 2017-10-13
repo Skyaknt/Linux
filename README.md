@@ -6,7 +6,7 @@
 
 [3. File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/3.%20Filesystem%20Structure.md)
 
-4. [File Permissions]()
+[4. File Permissions](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/4.%20File%20permissions.md)
 
 5. [Package Management]()
 
