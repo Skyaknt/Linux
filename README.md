@@ -10,13 +10,13 @@
 
 [5. Package Management](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/5.%20Package%20Management%20Systems.md)
 
-6. [Data Backup]()
+[6. Data Backup](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/6.%20Backup%20the%20data.md)
 
-7. [System Info]()
+[7. System Info](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/7.%20Linux%20release%20and%20system%20info.md)
 
-8. [Swap Memory](./content/swap_memory.md)
+[8. Swap Memory](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/8.%20Linux%20Swap%20Memory.md)
 
-9. [User Envinronment](./content/user_env.md)
+[9. User Envinronment](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/9.%20User%20Enviroment.md)
 
 10. [Processes](./content/processes.md)
 
