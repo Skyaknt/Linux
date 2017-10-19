@@ -18,7 +18,7 @@
 
 [9. User Envinronment](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/9.%20User%20Enviroment.md)
 
-10. [Processes](./content/processes.md)
+[10. Processes](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/10.%20Linux%20processes.md)
 
 11. [Volume Manager Basics](./content/volume_manager.md)
 
