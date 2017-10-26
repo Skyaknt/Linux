@@ -89,7 +89,7 @@ nó sẽ lấy dữ liệu chính xác từ một bản sao dự phòng khác v�
 
 - ZFS là một dạng file hệ thống tệp giao dịch
 	
-- Sử dụng cơ chế COW ( coppy on write ) để quản lí bằng cách sử dụng các bản sao của filesystem gốc.
+- Sử dụng cơ chế COW ( copy on write ) để quản lí bằng cách sử dụng các bản sao của filesystem gốc.
 
 		
 	+ Dữ liệu gốc không bị ghi đè lên.
@@ -154,7 +154,7 @@ $ sudo zfs rollback mypool/projects@snap1
 	
 #### <a name="sa"> 2.6 Simplified Administration </a>
 
-- ZFS cung cấp một mô hình quả lí đơn giản hóa và khoa học :
+- ZFS cung cấp một mô hình quản lí đơn giản hóa và khoa học :
 		
 	+ Dễ dàng tạo và quản lí hệ thống tập tin mà không yêu cầu nhiều lệnh hoặc file cấu hình.
 		
@@ -194,7 +194,7 @@ lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 	
 `$ sudo zpool create example /dev/sdb /dev/sdc /dev/sdd /dev/sde`
 
-- **Striped Mirrored VDEVs : Giống với hình thức RAID 10, tạo các cặp thiết bị sau đó đọc/ghi dữ liệu theo hình thức stripe lên bản sao.
+- **Striped Mirrored VDEVs** : Giống với hình thức RAID 10, tạo các cặp thiết bị sau đó đọc/ghi dữ liệu theo hình thức stripe lên bản sao.
 Ví dụ, tạo một mirrored pool 2x2 theo hình thức striped :
 
 `sudo zpool create example mirror /dev/sdb /dev/sdc mirror /dev/sdd /dev/sde`
