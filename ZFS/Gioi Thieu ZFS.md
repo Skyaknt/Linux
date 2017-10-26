@@ -211,7 +211,7 @@ sudo zpool add example mirror /dev/sdd /dev/sde
 	
 	![Imgur](https://i.imgur.com/iQhLaYW.gif)
 	
-	+ Tránh được "Write hone" bằng cách sử dụng COW - Copy on write ( khi mất điện đột ngột lúc đang ghi dữ liệu, 
+	+ Tránh được "Write hole" bằng cách sử dụng COW - Copy on write ( khi mất điện đột ngột lúc đang ghi dữ liệu, 
 	sẽ có trường hợp không thể biết được data blocks hoặc parity blocks nào vừa được ghi trùng với dữ liệu đã được
 	ghi trong các ổ stripe, và không xác định được là dữ liệu nào đã bị lỗi, đó gọi là hiện tượng "write hole" ).
 	+ Số đĩa cần : >= 3 đĩa 
