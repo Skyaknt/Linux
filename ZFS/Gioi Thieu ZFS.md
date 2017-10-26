@@ -78,6 +78,7 @@ lỗi xảy ra.
 - Với ZFS, tất cả dữ liệu và siêu dữ liệu ( metadata ) được phê duyệt bằng thuật toán người dùng có thể chọn để kiểm tra.
 	
 - ZFS checksums được lưu trữ với hình thức tất cả lỗi sẽ được phát hiện và có thể khôi phục lại files một cách cẩn thận.
+	+ Sử dụng cơ chế **scrub** để kiểm tra lỗi của các dataset bằng thuật toán **Fletcher 4** checksum.
 	
 	+ Tất cả hoạt động kiểm duyệt checksum và khôi phục dữ liệu được thực hiện ở lớp tệp hệ thống và trong suốt đối với các ứng dụng.
 		
