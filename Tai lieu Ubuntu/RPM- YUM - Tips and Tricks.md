@@ -46,7 +46,7 @@ vd : `rpm -qa httpd`
 
 3. Kiểm tra xem package nào liên quan tới một file cụ thể :
 
-`rpm -qa <file-path>
+`rpm -qa <file-path>`
 
 vd :
 
@@ -70,7 +70,7 @@ vd :
 
 6. Liệt kê sự thay đổi trong log của package :
 
-`rpm -q --changelog <package-name>
+`rpm -q --changelog <package-name>`
 
 vd :
 
@@ -99,7 +99,7 @@ Lệnh trên sẽ cài đặt gói `httpd` với các phần mềm bổ trợ đ
 không còn trong  repository, qá trình sẽ bị lỗi.
 
 - Trong quá trình cài đặt, sẽ có lựa chọn **[y/d/N]**
-	-  `d` : download only
+	- `d` : download only
 	- `y` : yes
 	- `N` : No
 	
@@ -154,10 +154,83 @@ vd :
 
 8. To display the configured repositories in the system.
 
-# yum repolist
+`# yum repolist`
+
 9. It is often useful to remove cached data accumulated in the /var/cache/yum/ directory.
 
-# yum clean all
+`# yum clean all`
+
+## Làm thế nào để tạo một yum repository?
+
+- Ta sẽ tạo một **repository** để test vừa quản trị nó qua **httpd**.
+- Hệ điều hành : **CentOS 7**
+
+`Server IP - 192.168.10.2`
+
+### Cấu hình server :
+
+- Cài đặt gói **httpd** : `yum install httpd -y`
+
+- Tạo một twh mục `custom_repo` trong `/var/www/html` và copyrpms trong thư mục đó :
+
+`mkdir -p /var/www/html/custom_repo`
+
+- Khi tạo xong, bạn tải cấc gói RPMs sử dụng **yumdownloader** - một công cụ tải RPMs tử **yum reposistories**
+
+`yumdownloader <pkg1> <pkg2> ....<pkgn>`
+
+- **Createrepo  rpm** yêu cầu phải tạo một **yum repository** 
+`yum install createrepo -y`
+
+- Lệnh **createrepo** sẽ xuất ra repodata trong thư mục **custom_repo** . Sau khi xác nhận repodata đã được xuất,
+khởi động dịch vụ **httpd**:
+
+```
+# createrepo /var/www/html/custom_repo
+# ls -l /var/www/html/custom_repo/repodata
+# systemctl start httpd
+```
+
+- Bạn có thể phê duyệt repository bằng cách truy cập `http://192.168.10.2/custom_repo` .
+
+### Cấu hình Client 
+
+Có 2 cách để thêm **reposistory** vào **client system** :
+
+-  Tạo một reposistory file `custom.repo` trong `/etc/yum.repos.d` và thêm nội dung vào một cách thủ công .
+
+```
+[custom_repo]
+name=custom_repo  
+baseurl=http://192.168.10.2/custom_repo  
+enabled=1  
+gpgcheck=1  
+```
+
+```
+Name - Name of the repository  
+baseurl - Repository location  
+enabled - To enabled repository set value as 1. To disable, 0.  
+gpgcheck - To enable gpgcheck set value as 1. To disable, 0.  
+```
+- Chạy lệnh `yum-config-manager` để thêm repository, nó sẽ tự động tạo một repo file trong thư mục `/ect/yum.repos.d`:
+
+`# yum-config-manager --add-repo http://192.168.10.2/custom_repo`
+
+- Bây giờ bắt đầu cài đặt các gói rpm trong hệ thống client :
+
+`yum install <package name>`
+
+- Các đường dẫn file cho việc cấu hình và gỡ lỗi :
+
+`/etc/yum.conf` - File cấu hình chính
+`/etc/yum.repos.d/` - file cấu hình reposistory
+`/etc/yum/` - Một số file cấu hình yum khác
+`/var/cache/yum/` - vị trí yum cache
+`/var/log/yum.log` - Yum log file
+`/var/lib/rpm/` - Tất cả thông tin về các gói RPMs đã được cài đặt và lưu trong RPM database. Files trong thư mục đó
+là các Berkeley DB files.
+**Để tra cứu tất cả lệnh/đặc điểm cung cấp bởi `yum` và `rpm` có thể sử dụng lệnh `--help` hoặc `man`**
 
 
 
