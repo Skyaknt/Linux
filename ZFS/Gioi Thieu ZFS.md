@@ -118,7 +118,7 @@ sau này process nào cần sửa chữa dữ liệu thì nó sẽ copy AS ra m�
 	
 - Dữ liệu metadata được phân bổ động, không cần phải quy định trước các inodes để lưu dữ liệu và giới hạn bộ nhớ của tập tin.
 
-- Thư mục có thể mở rộng đến 248 ( 256 nghìn tỉ ) mục, và số lượng các file là không giới hạn trong một file hệ thống. 
+- Thư mục có thể mở rộng đến 256 ( 256 nghìn tỉ ) mục, và số lượng các file là không giới hạn trong một file hệ thống. 
 	
 #### <a name="sn"> 2.5 ZFS Snapshots </a>
 
