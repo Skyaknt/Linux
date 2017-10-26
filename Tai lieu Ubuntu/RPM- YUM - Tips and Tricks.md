@@ -1,7 +1,7 @@
 RPM and YUM : Tips and Tricks
 
 # File RPM (Red Hat Package Manager) : Red Hat based Linux distribution.
-
+- **Yêu cầu** : HĐH CentOS 7
 - Tại sao lại cần RPM package?
 	- Theo hình thức ban đầu, tất cả các file sử dụng trong Linux đều ở dạng **tar** . Những file tar sẽ chứa 
 	tất cả files liên quan tới phần mềm đó. Người dùng muốn sử dụng phải trích xuất file và cài đặt nó. Điều này 
@@ -230,6 +230,7 @@ gpgcheck - To enable gpgcheck set value as 1. To disable, 0.
 `/var/log/yum.log` - Yum log file
 `/var/lib/rpm/` - Tất cả thông tin về các gói RPMs đã được cài đặt và lưu trong RPM database. Files trong thư mục đó
 là các Berkeley DB files.
+
 **Để tra cứu tất cả lệnh/đặc điểm cung cấp bởi `yum` và `rpm` có thể sử dụng lệnh `--help` hoặc `man`**
 
 
