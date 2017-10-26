@@ -148,6 +148,7 @@ vd :
 - Sử dụng lệnh `history` để xem lịch sử hoạt động của yum và hoàn tác nó :
 
 `# yum history undo <transaction id>`
+
 `# yum history undo 2 -y`
 
 8. To display the configured repositories in the system.
@@ -161,6 +162,7 @@ vd :
 ## Làm thế nào để tạo một yum repository?
 
 - Ta sẽ tạo một **repository** để test vừa quản trị nó qua **httpd**.
+
 - Hệ điều hành : **CentOS 7**
 
 `Server IP - 192.168.10.2`
@@ -178,6 +180,7 @@ vd :
 `yumdownloader <pkg1> <pkg2> ....<pkgn>`
 
 - **Createrepo  rpm** yêu cầu phải tạo một **yum repository** 
+
 `yum install createrepo -y`
 
 - Lệnh **createrepo** sẽ xuất ra repodata trong thư mục **custom_repo** . Sau khi xác nhận repodata đã được xuất,
@@ -222,10 +225,15 @@ gpgcheck - To enable gpgcheck set value as 1. To disable, 0.
 - Các đường dẫn file cho việc cấu hình và gỡ lỗi :
 
 `/etc/yum.conf` - File cấu hình chính
+
 `/etc/yum.repos.d/` - file cấu hình reposistory
+
 `/etc/yum/` - Một số file cấu hình yum khác
+
 `/var/cache/yum/` - vị trí yum cache
+
 `/var/log/yum.log` - Yum log file
+
 `/var/lib/rpm/` - Tất cả thông tin về các gói RPMs đã được cài đặt và lưu trong RPM database. Files trong thư mục đó
 là các Berkeley DB files.
 
