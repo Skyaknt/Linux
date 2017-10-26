@@ -30,9 +30,7 @@ RPM and YUM : Tips and Tricks
 	
 ## RPM Command : 
 
-Nếu trong máy không có gói rmp nào, download **Linux RPM Package** bằng lệnh :
 
-`wget http://mirror.downloadvn.com/apache//directory/apacheds/dist/2.0.0-M24/apacheds-2.0.0-M24-x86_64.rpm`
 
 1. Liệt kê danh sách các gói RPM đã cài đặt trên hệ thống :
 
