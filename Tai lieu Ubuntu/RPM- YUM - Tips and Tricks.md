@@ -1,7 +1,9 @@
 RPM and YUM : Tips and Tricks
 
 # File RPM (Red Hat Package Manager) : Red Hat based Linux distribution.
+
 - **Yêu cầu** : HĐH CentOS 7
+
 - Tại sao lại cần RPM package?
 	- Theo hình thức ban đầu, tất cả các file sử dụng trong Linux đều ở dạng **tar** . Những file tar sẽ chứa 
 	tất cả files liên quan tới phần mềm đó. Người dùng muốn sử dụng phải trích xuất file và cài đặt nó. Điều này 
@@ -36,11 +38,15 @@ RPM and YUM : Tips and Tricks
 
 `rpm -qa`
 
+![Imgur](https://i.imgur.com/jxG6fYg.jpg)
+
 2. Kiểm tra một phần mềm cụ thể nào đó đã được cài đặt trên hệ thống chưa:
 
 `rpm -qa <package-name>`
 
 vd : `rpm -qa httpd`
+
+![Imgur](https://i.imgur.com/LeHom45.jpg)
 
 3. Kiểm tra xem package nào liên quan tới một file cụ thể :
 
@@ -50,6 +56,8 @@ vd :
 
 `rpm -qf /etc/yum.conf`
 
+![Imgur](https://i.imgur.com/jgN9Eac.jpg)
+
 4. Liệt kê tất cả file trong package :
 
 `rpm -ql <package-name>`
@@ -57,6 +65,8 @@ vd :
 vd :
 
 `rpm -ql yum`
+
+![Imgur](https://i.imgur.com/8UUYywp.jpg)
 
 5. Kiểm các các gói bổ trợ của RPM package : 
 
@@ -74,6 +84,7 @@ vd :
 
 `rpm -q --changelog yum | less`
 
+![Imgur](https://i.imgur.com/8UUYywp.jpg)
 
 ## Lệnh YUM 
 
@@ -105,6 +116,8 @@ không còn trong  repository, qá trình sẽ bị lỗi.
 
 `yum install <pkg1> <pkg2>....<pkgn>`
 
+![Imgur](https://i.imgur.com/fwhr02L.jpg)
+
 2. Gỡ bỏ RPM package :
 
 `# yum erase <package name>`
@@ -112,6 +125,7 @@ không còn trong  repository, qá trình sẽ bị lỗi.
 vd :
 
 `# yum erase httpd`
+![Imgur](https://i.imgur.com/39bwWJp.jpg)
 
 3. Cập nhật RPM package :
 
@@ -133,6 +147,8 @@ vd :
 
 `# yum info httpd`
 
+![Imgur](https://i.imgur.com/NLRG40i.jpg)
+
 6. Tìm ra package nào cung cấp một lệnh/thư viện cụ thể :
 
 `# yum provides <binary/command name>`
@@ -141,9 +157,13 @@ vd :
 
 `# yum provides sar`
 
+![Imgur](https://i.imgur.com/aVi1jyB.jpg)
+
 7. Kiểm tra lịch sử của các yum transaction trong hệ thống, sử dụng lệnh dưới để hiển thị transaction-id, thời gian , hoạt động :
 
 `# yum history`
+
+![Imgur](https://i.imgur.com/q0urqCx.jpg)
 
 - Sử dụng lệnh `history` để xem lịch sử hoạt động của yum và hoàn tác nó :
 
@@ -155,9 +175,13 @@ vd :
 
 `# yum repolist`
 
+![Imgur](https://i.imgur.com/tqK3p2T.jpg)
+
 9. It is often useful to remove cached data accumulated in the /var/cache/yum/ directory.
 
 `# yum clean all`
+
+![Imgur](https://i.imgur.com/TS1NgUc.jpg)
 
 ## Làm thế nào để tạo một yum repository?
 
@@ -179,6 +203,8 @@ vd :
 
 `yumdownloader <pkg1> <pkg2> ....<pkgn>`
 
+![Imgur](https://i.imgur.com/dbilMHs.jpg)
+
 - **Createrepo  rpm** yêu cầu phải tạo một **yum repository** 
 
 `yum install createrepo -y`
@@ -191,8 +217,11 @@ khởi động dịch vụ **httpd**:
 # ls -l /var/www/html/custom_repo/repodata
 # systemctl start httpd
 ```
+![Imgur](https://i.imgur.com/6fNxugh.jpg)
 
 - Bạn có thể phê duyệt repository bằng cách truy cập `http://192.168.10.2/custom_repo` .
+
+![Imgur](https://i.imgur.com/XArUg75.jpg)
 
 ### Cấu hình Client 
 
@@ -218,6 +247,8 @@ gpgcheck - To enable gpgcheck set value as 1. To disable, 0.
 
 `# yum-config-manager --add-repo http://192.168.10.2/custom_repo`
 
+![Imgur](https://i.imgur.com/oD9APQC.jpg)
+cd /
 - Bây giờ bắt đầu cài đặt các gói rpm trong hệ thống client :
 
 `yum install <package name>`
@@ -239,6 +270,8 @@ là các Berkeley DB files.
 
 **Để tra cứu tất cả lệnh/đặc điểm cung cấp bởi `yum` và `rpm` có thể sử dụng lệnh `--help` hoặc `man`**
 
+## Tham khảo :
 
+(1) http://neharawat.in/RPM-YUM-Tips-and-Tricks/
 
 
