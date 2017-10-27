@@ -152,12 +152,15 @@ vd :
 `# yum history undo <transaction id>`
 `# yum history undo 2 -y`
 
-8. To display the configured repositories in the system.
+8. Hiển thị repository đã được cấu hình trong hệ thống :
 
-# yum repolist
-9. It is often useful to remove cached data accumulated in the /var/cache/yum/ directory.
+`# yum repolist`
 
-# yum clean all
+9. Xóa dữ liệu cache trong thư mục đường dẫn `/var/cache/yum/` directory :
+
+`# yum clean all`
+
+## Tạo một yum repository :
 
 
 
