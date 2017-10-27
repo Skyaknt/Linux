@@ -78,6 +78,7 @@ lỗi xảy ra.
 - Với ZFS, tất cả dữ liệu và siêu dữ liệu ( metadata ) được phê duyệt bằng thuật toán người dùng có thể chọn để kiểm tra.
 	
 - ZFS checksums được lưu trữ với hình thức tất cả lỗi sẽ được phát hiện và có thể khôi phục lại files một cách cẩn thận.
+	+ Sử dụng cơ chế **scrub** để kiểm tra lỗi của các dataset bằng thuật toán **Fletcher 4** checksum.
 	
 	+ Tất cả hoạt động kiểm duyệt checksum và khôi phục dữ liệu được thực hiện ở lớp tệp hệ thống và trong suốt đối với các ứng dụng.
 		
@@ -88,7 +89,7 @@ nó sẽ lấy dữ liệu chính xác từ một bản sao dự phòng khác v�
 
 - ZFS là một dạng file hệ thống tệp giao dịch
 	
-- Sử dụng cơ chế COW ( coppy on write ) để quản lí bằng cách sử dụng các bản sao của filesystem gốc.
+- Sử dụng cơ chế COW ( copy on write ) để quản lí bằng cách sử dụng các bản sao của filesystem gốc.
 
 		
 	+ Dữ liệu gốc không bị ghi đè lên.
@@ -117,7 +118,7 @@ sau này process nào cần sửa chữa dữ liệu thì nó sẽ copy AS ra m�
 	
 - Dữ liệu metadata được phân bổ động, không cần phải quy định trước các inodes để lưu dữ liệu và giới hạn bộ nhớ của tập tin.
 
-- Thư mục có thể mở rộng đến 248 ( 256 nghìn tỉ ) mục, và số lượng các file là không giới hạn trong một file hệ thống. 
+- Thư mục có thể mở rộng đến 256 ( 256 nghìn tỉ ) mục, và số lượng các file là không giới hạn trong một file hệ thống. 
 	
 #### <a name="sn"> 2.5 ZFS Snapshots </a>
 
@@ -153,7 +154,7 @@ $ sudo zfs rollback mypool/projects@snap1
 	
 #### <a name="sa"> 2.6 Simplified Administration </a>
 
-- ZFS cung cấp một mô hình quả lí đơn giản hóa và khoa học :
+- ZFS cung cấp một mô hình quản lí đơn giản hóa và khoa học :
 		
 	+ Dễ dàng tạo và quản lí hệ thống tập tin mà không yêu cầu nhiều lệnh hoặc file cấu hình.
 		
@@ -193,7 +194,7 @@ lưu trên đĩa 1, một nửa nằm trên đĩa 2.
 	
 `$ sudo zpool create example /dev/sdb /dev/sdc /dev/sdd /dev/sde`
 
-- **Striped Mirrored VDEVs : Giống với hình thức RAID 10, tạo các cặp thiết bị sau đó đọc/ghi dữ liệu theo hình thức stripe lên bản sao.
+- **Striped Mirrored VDEVs** : Giống với hình thức RAID 10, tạo các cặp thiết bị sau đó đọc/ghi dữ liệu theo hình thức stripe lên bản sao.
 Ví dụ, tạo một mirrored pool 2x2 theo hình thức striped :
 
 `sudo zpool create example mirror /dev/sdb /dev/sdc mirror /dev/sdd /dev/sde`
@@ -210,7 +211,7 @@ sudo zpool add example mirror /dev/sdd /dev/sde
 	
 	![Imgur](https://i.imgur.com/iQhLaYW.gif)
 	
-	+ Tránh được "Write hone" bằng cách sử dụng COW - Copy on write ( khi mất điện đột ngột lúc đang ghi dữ liệu, 
+	+ Tránh được "Write hole" bằng cách sử dụng COW - Copy on write ( khi mất điện đột ngột lúc đang ghi dữ liệu, 
 	sẽ có trường hợp không thể biết được data blocks hoặc parity blocks nào vừa được ghi trùng với dữ liệu đã được
 	ghi trong các ổ stripe, và không xác định được là dữ liệu nào đã bị lỗi, đó gọi là hiện tượng "write hole" ).
 	+ Số đĩa cần : >= 3 đĩa 
