@@ -26,7 +26,7 @@
 
 12. [Networking](./content/basic_networking.md)
 
-13. [Network File System](./content/nfs.md)
+[13. Network File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/14.%20NSF.md)
 
 14. [iSCSI](./content/shared_storage_iscsi.md)
 
