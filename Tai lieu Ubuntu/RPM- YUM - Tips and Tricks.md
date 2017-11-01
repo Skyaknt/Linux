@@ -9,9 +9,9 @@ RPM and YUM : Tips and Tricks
 	tất cả files liên quan tới phần mềm đó. Người dùng muốn sử dụng phải trích xuất file và cài đặt nó. Điều này 
 	sẽ dẫn tới 2 bất lợi :
 	
-		-  Một phần mềm khi được cài đặt sẽ khó để theo dõi tất cả các file đã được cài đặt trên những đường dẫn 
-		khác nhau trong hệ thống, do đó khó để xóa hay cập nhật phần mềm. 
-		- Nếu phần mềm đó có những phần bổ trợ thì người dùng phải cài bằng tay chúng trước khi cài phần mềm.
+	-  Một phần mềm khi được cài đặt sẽ khó để theo dõi tất cả các file đã được cài đặt trên những đường dẫn 
+	khác nhau trong hệ thống, do đó khó để xóa hay cập nhật phần mềm. 
+	- Nếu phần mềm đó có những phần bổ trợ thì người dùng phải cài bằng tay chúng trước khi cài phần mềm.
 		
 => File RPM chứa tất cả các thông tin về phiên bản, danh sách các files, các phần bổ trợ, mô tả về package... do vậy 
 	sẽ luôn theo dõi được các thành phần nó.	
