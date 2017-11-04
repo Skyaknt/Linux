@@ -325,7 +325,7 @@ sudo zfs receive -F mypool/projects-copy < ~/projects-snap.zfs
 
 #### <a name="psc"> 4.7  ZFS Pool Scrubling </a>
 
-- Để kiểm tra tính toàn vẹn dữ liệu trong pool.
+- Để kiểm tra tính toàn vẹn dữ liệu trong pool. Nó sẽ kiểm tra các block dữ liệu bằng các thuật toán checksum, nếu block nào bị lỗi nó sẽ sửa chữa lại block đó bằng cách lấy 1 block mirror ở ổ đĩa khác và khôi phục lại block gốc bị lỗi.
 
 ` $ sudo zpool scrub mypool`
 
