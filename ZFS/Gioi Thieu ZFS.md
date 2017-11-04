@@ -242,6 +242,8 @@ $ sudo zpool add example raidz /dev/sdf /dev/sdg /dev/sdh /dev/sdi
 
 #### <a name="il"> 4.1 ZFS Intent Logs (ZIL): </a>
 
+![Imgur](https://i.imgur.com/YeApSv4.png)
+
 - ZIL có thể được thêm vào ZFS pool để tăng tốc độ ghi cho các cơ chế ZFS RAID.
 
 - ZIL thực chất là một cơ chế lưu lại các dữ liệu sẽ được đưa vào bộ nhớ ổ cứng , sau đó dữ liệu ấy khi hệ thống xảy ra sự cố, dữ liệu trong RAM bị mất do mất điện, thì ZFS sẽ truy xuất các dữ liệu đang lưu vào ZIL nhằm phục hồi lại những file đang nằm trong RAM.
