@@ -24,11 +24,11 @@
 
 12. [Advanced Volume Manager](./content/volume_manager_cont.md)
 
-12. [Networking](./content/basic_networking.md)
+13. [Networking](./content/basic_networking.md)
 
-[13. Network File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/14.%20NSF.md)
+[14. Network File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/14.%20NSF.md)
 
-14. [iSCSI](./content/shared_storage_iscsi.md)
+[15. [iSCSI](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/15.%20iSCSI.md)
 
 15. [Security](./content/basic_security.md)
 
