@@ -48,7 +48,7 @@ trên thư mục của họ mà không thể thay đổi gì ở các thư mục
 	```
 	# %wheel        ALL=(ALL)       ALL
 	
-	**%quantri      ALL=(ALL)       ALL**
+	%quantri      ALL=(ALL)       ALL
 	```
 	
 		Lưu lại và thoát ra bằng `:wq!`
