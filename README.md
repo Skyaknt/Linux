@@ -20,7 +20,7 @@
 
 [10. Processes](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/10.%20Linux%20processes.md)
 
-[11. Volume Manager Basics](https://github.com/Skyaknt/Linux/blob/master/11.%20Volume%20management%20basic.md)
+[11. Volume Manager Basics](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/11.%20Volume%20management%20basic.md)
 
 12. [Advanced Volume Manager](./content/volume_manager_cont.md)
 
