@@ -22,9 +22,9 @@
 
 [11. Volume Manager Basics](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/11.%20Volume%20management%20basic.md)
 
-12. [Advanced Volume Manager](./content/volume_manager_cont.md)
+[12. Advanced Volume Manager](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/12.%20Volume%20Management%20advance.md)
 
-13. [Networking](./content/basic_networking.md)
+[13. Networking](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/13.%20Network%20Interfaces.md)
 
 [14. Network File System](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/14.%20NSF.md)
 
