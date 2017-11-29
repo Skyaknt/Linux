@@ -30,11 +30,11 @@
 
 [15. iSCSI](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/15.%20iSCSI.md)
 
-16. [Security](./content/basic_security.md)
+[16. Security](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/16.%20Security.md)
 
-17. [Command Line](./content/command_line_prompt.md)
+[17. Command Line](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/17.%20Linux%20command%20line.md)
 
-18. [Text Commands](./content/text_commands.md)
+[18.Text Commands](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/18.%20Text%20Command.md)
 
 19. [Bash Programming](./content/bash_programming.md)
 
