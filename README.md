@@ -34,9 +34,9 @@
 
 [17. Command Line](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/17.%20Linux%20command%20line.md)
 
-[18.Text Commands](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/18.%20Text%20Command.md)
+[18. Text Commands](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/18.%20Text%20Command.md)
 
-19. [Bash Programming](./content/bash_programming.md)
+[19. Bash Programming](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/19.%20Shell%20Bash%20Programming.md)
 
 20. [Systemd](./content/systemd.md)
 
