@@ -38,7 +38,7 @@
 
 [19. Bash Programming](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/19.%20Shell%20Bash%20Programming.md)
 
-20. [Systemd](./content/systemd.md)
+[20. Systemd](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/20.%20Systemd.md)
 
 21. [Samba Server](./content/samba_server.md)
 
