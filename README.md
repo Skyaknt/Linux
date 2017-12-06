@@ -40,7 +40,7 @@
 
 [20. Systemd](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/20.%20Systemd.md)
 
-21. [Samba Server](./content/samba_server.md)
+[21. Samba Server](https://github.com/Skyaknt/Linux/blob/master/LinuxBasic/21.%20Samba%20server%20and%20windows%20file%20sharing.md)
 
 22. [Virtual Networking](./content/virtual-networking.md)
 
