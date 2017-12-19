@@ -51,7 +51,7 @@ Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử d�
 
 #### RAID 0:
 
-![Imgur](https://i.imgur.com/xOBMrJ5.gifv)
+![Imgur](https://i.imgur.com/xOBMrJ5.gif)
 
 -  Raid 0 phổ biến và được nhiều người sử dụng hiện nay do có khả năng nâng cao hiệu suất tốc độc đọc ghi trao đổi dữ liệu của ổ cứng.
 - Server cần tối thiểu 2 ổ đĩa (Disk 0, Disk 1) để setup.
@@ -80,7 +80,7 @@ Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử d�
 
 #### RAID 5:
 
-![Imgur](https://i.imgur.com/PplFy0Q.gifv)
+![Imgur](https://i.imgur.com/PplFy0Q.gif)
 
 Raid 5 cũng là một loại Raid được phổ biến khá rộng rãi. Nguyên tắc cơ bản của Raid 5 cũng gần giống với 2 loại raid lưu trữ truyền thống là Raid 1 và Raid 0. Tức là cũng có tách ra lưu trữ các ổ cứng riêng biệt và vẫn có phương án dự phòng khi có sự cố phát sinh đối với 1 ổ cứng bất kì trong cụm.
 
