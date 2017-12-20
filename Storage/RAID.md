@@ -1,6 +1,6 @@
 # Các hình thức RAID
 
-### 1. Định nghĩa :
+## 1. Định nghĩa :
 
 RAID (Redundant Arrays of Inexpensive Disks) là hình thức ghép nhiều ổ đĩa cứng vật lý thành một hệ thống ổ đĩa cứng có chức 
 gia tăng tốc độ đọc/ghi dữ liệu hoặc nhằm tăng thêm sự an toàn của dữ liệu chứa trên hệ thống đĩa hoặc kết hợp cả hai yếu tố trên.
@@ -16,13 +16,14 @@ Dự phòng cho phép sao lưu dữ liệu bộ nhớ khi gặp sự cố. Nếu
 ổ cứng khác mà không cần tắt cả hệ thống hoặc có thể sử dụng ổ cứng dự phòng. 
 Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử dụng. 
 
-- Có 2 hình thức RAID :
+- Có 3 hình thức RAID :
 	- Software RAID
 	- Hardware RAID
+	- Host RAID
 
 	
 	
-### 2. Software RAID:
+## 2. Software RAID:
 
 - RAID phần mềm được cài đặt và sử dụng trên chính hệ điều hành của hệ thống để cung cấp các chức năng sau:
 + Sử dụng tài nguyên hệ thống của máy chủ.
@@ -37,7 +38,7 @@ Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử d�
 **Nhược điểm:** Raid mềm chỉ là tập hợp con các tính năng của raid cứng, và nói về độ hư hại của raid mềm là rất lớn không có khả năng phuc hồi, vì raid mềm tích hợp trên mainboard, khi hỏng là hỏng main.
 
 
-### 3. Hardware RAID:
+## 3. Hardware RAID:
 
 - RAID cứng thiết lập mảng đĩa cho hệ điều hành sẵn trước khi cài đặt hệ điều hành
 - Khi hệ điều hành sử dụng không tốn tài nguyên cho việc quản lý đĩa liên quan đến RAID
@@ -49,7 +50,7 @@ Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử d�
 **Nhược điểm**: Giá thành cao, không sử dụng được cho các máy tính phổ thông (ví dụ: 1 pc bình thường)
 
 
-#### RAID 0:
+### RAID 0:
 
 ![Imgur](https://i.imgur.com/xOBMrJ5.gif)
 
@@ -60,7 +61,7 @@ Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử d�
 **Nhược điểm:** tiềm ẩn rủi ro về dữ liệu. Lý do dữ liệu được chia đôi lưu trên 2 ổ đĩa.Trường hợp 1 trong 2 ổ đĩa bị hỏng thì nguy cơ mất dữ liệu rất cao. Về ổ cứng yêu cầu phải 2 ổ cùng dung lượng, nếu 2 ổ khác dung lượng thì lấy ổ thấp nhất.
 - **Đối tượng sử dụng:** Thích hợp với những dịch vụ cần lưu trữ và truy xuất với tốc độ cao. Chẳng hạn như dịch vụ video streaming, chạy cơ sở dữ liệu... 
  
-#### RAID 1:
+### RAID 1:
 
 ![Imgur](https://i.imgur.com/rRYFwqr.jpg)
  
@@ -78,7 +79,7 @@ Phương pháp dự phòng phụ thuộc vào phiên bản RAID được sử d�
 
 **Đối tượng sử dụng:** Các dịch vụ lưu trữ, các website vừa và nhỏ không yêu cầu quá cao về tốc độ đọc ghi (in/out) của ổ cứng. Các đối tượng yêu cầu sự an toàn về dữ liệu như các dịch vụ kế toán,lưu trữ thông tin khách hàng, bất động sản v.v…
 
-#### RAID 5:
+### RAID 5:
 
 ![Imgur](https://i.imgur.com/PplFy0Q.gif)
 
@@ -95,7 +96,7 @@ Raid 5 cũng là một loại Raid được phổ biến khá rộng rãi. Nguy�
 **Đối tượng sử dụng:** Tất cả những website, dịch vụ, ứng dụng có số lượng truy cập và yêu cầu tài nguyên từ nhỏ đến vừa và lớn.
 
 
-#### RAID 10:
+### RAID 10:
  
 ![Imgur](https://i.imgur.com/cw0GIJS.png)
  
@@ -112,7 +113,7 @@ Raid 10 là sự kết hợp giữa 2 loại raid phổ biến và Raid 1 và Ra
 **Đối tượng sử dụng:** Raid 10 thích hợp với tất cả các đối tượng sử dụng (từ những yêu cầu về hiệu suất đến việc đảm bảo an toàn dữ liệu). Về ổ cứng yêu cầu phải 4 ổ cùng dung lượng, nếu 4 ổ khác dung lượng thì lấy ổ thấp nhất.
 
 
-#### RAID 01:
+### RAID 01:
 
 ![Imgur](https://i.imgur.com/b9LB0mP.png)
 
@@ -124,7 +125,7 @@ Sự kết hợp giữa RAID0 và RAID1
 
 **Nhược điểm:** Giá thành cao.
 
-#### RAID Z:
+### RAID Z:
 
 ![Imgur](https://i.imgur.com/zIOkI9E.gif)
  
@@ -140,7 +141,7 @@ RAID-Z : Một bản nâng cấp từ RAID 5
 
 - Nếu muốn thêm an toàn, có thể dùng RAID 6 ( RAID-Z2 trên cơ sở của ZFS) để có 2 lần dự phòng.
 
-#### RAID Z2:
+### RAID Z2:
 
 ![Imgur](https://i.imgur.com/dUufg91.gif)
 
@@ -160,7 +161,7 @@ RAID-Z : Một bản nâng cấp từ RAID 5
 - Chỉ hỗ trợ nền tảng Solaris OS như Open Solaris hoặc Nexenta và BSD như FreeBSD.
  
  
-#### RAID Z3:
+### RAID Z3:
 
 ![Imgur](https://i.imgur.com/UmYH2sz.png)
  
@@ -170,6 +171,12 @@ Về cơ bản giống RAIDZ, nhưng yêu cầu tối thiểu 5 ổ đĩa để 
 
 => Sử dụng trong môi trường có nhiều dữ liệu quan trọng và đảm bảo độ high avalability cao.
 
+
+## 3. Host RAID:
+
+rường hợp khi ta gắn một số ổ cứng ngoài vào hệ thống để cài đặt RAID, khi đó hệ thống RAID này vẫn sử dụng tài nguyên của máy tính để quản lí và hoạt động. 
+- Tuy nhiên ở đây các thiết bị được gắn vào là card rời, nó sử dụng firmware nhận diện/ đánh giá ổ cứng trước khi HĐH được khởi động. 
+Và sau khi HĐH khởi động xong (lấy quyền kiểm soát lại từ Bios) thì khi đó nó giao quyền điều khiển RAID cho OS luôn. Vì thế mà nó có tên gọi Host RAID.
 
 
 ### Parity
@@ -202,3 +209,8 @@ Lưu ý parity chỉ được sử dụng ở các cấp độ RAID 2 , 3, 4 , v
 RAID 1 không sử dụng parity bởi vì tất cả dữ liệu là hoàn toàn sao chép ( nhân đôi).
 
 Còn RAID 0 chỉ được sử dụng để tăng hiệu suất truy xuất. Vì không trang bị chức năng dự phòng dữ liệu nên nó không có parity .
+
+
+### Tham khảo :
+
+(1). http://genk.vn/may-tinh/tim-hieu-ve-raid-tren-o-cung-may-tinh-20140113144618737.chn
