@@ -17,7 +17,7 @@
 
 ### Các cấp độ của bộ nhớ
 
-!(image)
+![Imgur](https://i.imgur.com/sBxgklh.png)
 
 - **Level 1 hay Register**: Một loại bộ  nhớ cache mà dữ liệu được lưu trực tiếp trên CPU. Hầu hết các trường hợp sử dụng **register** là thanh chứa thông tin, chương trình truy cập, đăng kí địa chỉ.
 - **Level 2 or Cache memory**: Đây là bộ nhớ có thời gian truy cập nhanh nhất, nơi dữ liệu được lưu trữ tạm thời để truy cập nhanh hơn.
