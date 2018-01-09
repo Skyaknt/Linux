@@ -54,13 +54,9 @@ khiển VCM nhằm cho dừng hoạt động của đầu từ.
 
 ![Imgur](https://i.imgur.com/XuJ5y5N.png)
 
-
-
 ![Imgur](https://i.imgur.com/Go7t1tQ.png)
 
 Nắp đậy bộ giữ một miếng đệm (màu vàng) bảo vệ ổ cứng.
-
-![Imgur](https://i.imgur.com/A2ZQML4.png)
 
 Dữ liệu được lưu trong các tấm đĩa xoay quanh trục đồng nhất (platters) 
 
@@ -100,11 +96,29 @@ vì vậy nó có thể gây ảnh hưởng cho lớp từ tính này.
 Còn kiểu định dạng thông thường chỉ tác động 
 lên phần dữ liệu có trên đĩa mà không gây ảnh hưởng đến cấu trúc vật lý của đĩa.
 ```
-
 - Với mỗi đĩa cứng khoảng 10G => có khoảng 7000 đường track trên mỗi bề mặt đĩa và mỗi trách chia thành khoảng 200 sector.
 
 - Để tăng dung lượng của đĩa thì trong các đĩa cứng ngày nay, các Track ở ngoài được chia thành nhiều sector hơn và mỗi 
 mặt đĩa được chia thành nhiều Track hơn => Thiết bị phải có độ chính xác rất cao.
+
+##### Sector
+
+![Imgur](https://i.imgur.com/BbYbQkI.jpg)
+
+Trên mỗi track người ta lại chia nhỏ nó ra từng phần gọi là các sector. Đây được coi là đơn vị dữ liệu nhỏ nhất trên ổ cứng HDD. Theo tiêu chuẩn thông thường thì mỗi sector chứa 512 byte dữ liệu, mỗi ổ cứng được chia ra hơn 10 vùng, mỗi vùng có số sector bằng nhau.
+
+##### Cylinder
+
+![Imgur](https://i.imgur.com/hQ1Gxpt.gif)
+
+Nếu nhìn vào hình minh họa sau, bạn có thể hình dung cylinder là những track đồng trục có chung một tâm trên mặt đĩa. Nói cách khác, khi đầu đọc đầu tiên làm việc trên một track nào đó thì tập hợp tất cả các track ở bề mặt đĩa đó gọi là cylinder. Một ổ cứng HDD có thể chứa nhiều cylinder vì có nhiều track ở mỗi mặt đĩa.
+
+Ổ cứng HDD
+
+Sau một thời gian hoạt động, ổ cứng rất dễ bị lỗi bad sector – nghĩa là các sector trên bề mặt đĩa bị không còn nguyên vẹn như lúc đầu, khiến cho đầu từ không thể đọc/ghi dữ liệu bình thường tại vị trí sector đó. Chính vì thế, các bạn nên theo dõi ổ cứng thường xuyên để kịp thời phát hiện ra lỗi, có biện pháp sao lưu dữ liệu thích hợp và thay thế ổ cứng trong thời gian tới. Tuy nhiên nếu chưa có điều kiện để thay ổ cứng, các bạn cần thực hiện cắt bad ổ cứng.
+
+Trong trường hợp bị mất dữ liệu ổ cứng HDD, tuyệt đối không ghi thêm dữ liệu vào ổ, các dữ liệu mới này sẽ ghi đè lên dữ liệu cũ và dữ liệu cũ mất vĩnh viễn mà không thể cứu dữ liệu ổ cứng.
+
 
 #### Nguyên tắc lưu trữ từ trên đĩa cứng:
 
